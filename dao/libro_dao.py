@@ -1,9 +1,10 @@
 # DAO: Data access object
 # libro_dao: objeto de acceso a datos para la tabla libro
+
 from database.conexion import Conexion 
 from models.libro import Libro 
 
-class libroDAO:
+class LibroDAO:
 
     #SELEC * from libro
     def obtener_todos (self):
@@ -15,7 +16,13 @@ class libroDAO:
 
         libros = []
         for registro in registros:
-            libro = Libro(registro.id, registro.titulo, registro.autor, registro.isbn, registro.disponible)
+            libro = Libro(
+                id=registro[0],
+                titulo=registro[1],
+                autor=registro[2],
+                isbn=registro[3],
+                disponible=registro[4]
+            )
             libros.append(libro)
 
         cursor.close()
@@ -57,4 +64,5 @@ class libroDAO:
         conexion.commit()
         cursor.close()
         conexion.close()
+
         

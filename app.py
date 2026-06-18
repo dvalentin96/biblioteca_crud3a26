@@ -26,6 +26,5 @@ def main():
         print("Error:")
         print (e)
 
-if_name_=="_main_":
+if __name__=="__main__":
     main()
-
