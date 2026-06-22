@@ -1,4 +1,4 @@
-class libro:
+class Libro:
 
     # Constructor de la clase libro
     def __init__(self, id, titulo, autor, isbn, disponible):
