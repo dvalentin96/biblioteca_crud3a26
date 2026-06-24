@@ -34,8 +34,8 @@ class LibroDAO:
         cursor = conexion.cursor()
         sql = """
 
-        INSERT INTO libro (id,titulo,autor,isbn,disponible)
-        VALUES (%s,%s,%s,%s,%s)
+        INSERT INTO libro (titulo,autor,isbn,disponible)
+        VALUES (%s,%s,%s,%s)
         """
         cursor.execute(sql, (libro.titulo, libro.autor, libro.isbn, libro.disponible))
         conexion.commit()
@@ -49,7 +49,7 @@ class LibroDAO:
         sql = """
         UPDATE libro
         SET titulo = %s, autor = %s, isbn = %s, disponible = %s 
-        WERE id = %s
+        WHERE id = %s
         """
         cursor.execute(sql, (libro.titulo, libro.autor, libro.isbn, libro.disponible, libro.id))
         conexion.commit()
@@ -65,7 +65,7 @@ class LibroDAO:
         cursor.close()
         conexion.close()
 
-    def obtener_ultimi_id(self):
+    def obtener_ultimimo_id(self):
         conexion = Conexion.obtener_conexion()
         cursor = conexion.cursor()
 
@@ -76,8 +76,8 @@ class LibroDAO:
         cursor.close()
         conexion.close()
 
-        if resultado: is None:
-        return 0
+        if resultado is None:
+            return 0
         return resultado[0]
 
 
